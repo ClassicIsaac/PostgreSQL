@@ -57,6 +57,11 @@ SELECT * FROM vehicle_type;
 -- Count the number of accidents in the dataset
 SELECT COUNT(*) FROM accident;
 
+-- Create index on acident_index column
+CREATE INDEX idx_accident_index ON accident(accident_index);
+
+-- Create index on the accident_index colun and the vehicle_type_id column which are both frequently used in queries
+CREATE INDEX idx_vehicle_acident_type ON vehicle(accident_index,vehicle_type_id);
 -- Count the number of accidents by severity level and order them by count
 SELECT accident_severity,COUNT(accident_severity)
 FROM accident GROUP BY accident_severity
